@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const TextInput = ({ todos, setTodos }) => {
   const inputValueHandler = (e) => {
@@ -10,6 +10,8 @@ const TextInput = ({ todos, setTodos }) => {
       e.target.value = "";
     }
   };
+
+  useEffect(() => (document.title = "My Todos (" + todos.length + ")"));
 
   return (
     <div className='textInputContainer'>
