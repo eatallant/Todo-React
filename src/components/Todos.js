@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Todos = ({ todos, setTodos }) => {
+const Todos = ({ todos, setTodos, count, setCount }) => {
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -16,6 +16,11 @@ const Todos = ({ todos, setTodos }) => {
       })
     );
   };
+
+  useEffect(() => {
+    let currentCount = todos.filter((todo) => todo.completed === false).length;
+    setCount(currentCount);
+  });
 
   return (
     <>

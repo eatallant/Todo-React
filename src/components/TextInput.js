@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const TextInput = ({ todos, setTodos }) => {
+const TextInput = ({ todos, setTodos, count, setCount }) => {
   const inputValueHandler = (e) => {
     if (e.key === "Enter") {
       setTodos([
         ...todos,
         { id: Math.random() * 1000, text: e.target.value, completed: false },
       ]);
+
       e.target.value = "";
+      incrementCount();
     }
   };
-
-  useEffect(() => (document.title = "My Todos (" + todos.length + ")"));
+  const incrementCount = () => {
+    let currentCount = count;
+    setCount(currentCount + 1);
+  };
 
   return (
     <div className='textInputContainer'>

@@ -1,7 +1,6 @@
 import React from "react";
 
-const Footer = ({ todos }) => {
-  const count = todos.length;
+const Footer = ({ todos, count }) => {
   return (
     <>
       <div className='todo-count'>Remaining items: {count}</div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // import components
@@ -9,15 +9,27 @@ import TextInput from "./components/TextInput";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [count, setCount] = useState(0);
 
+  useEffect(() => (document.title = "My Todos (" + count + ")"));
   return (
     <div className='App App-header'>
       <Header />
       <div className='todosContainer'>
-        <TextInput todos={todos} setTodos={setTodos} />
-        <Todos todos={todos} setTodos={setTodos} />
+        <TextInput
+          todos={todos}
+          setTodos={setTodos}
+          setCount={setCount}
+          count={count}
+        />
+        <Todos
+          todos={todos}
+          setTodos={setTodos}
+          count={count}
+          setCount={setCount}
+        />
         <footer className='footer'>
-          <Footer todos={todos} />
+          <Footer todos={todos} count={count} />
         </footer>
       </div>
     </div>
