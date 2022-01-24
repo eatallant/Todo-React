@@ -2,7 +2,7 @@ import React from "react";
 
 const TextInput = ({ todos, setTodos, count, setCount }) => {
   const inputValueHandler = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && e.target.value !== "") {
       setTodos([
         ...todos,
         { id: Math.random() * 1000, text: e.target.value, completed: false },

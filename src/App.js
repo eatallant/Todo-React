@@ -11,7 +11,9 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [count, setCount] = useState(0);
 
+  // track active count in the page title. Any state change will result in a new count
   useEffect(() => (document.title = "My Todos (" + count + ")"));
+
   return (
     <div className='App App-header'>
       <Header />
