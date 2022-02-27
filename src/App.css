@@ -63,8 +63,29 @@
   border-bottom: 2px solid #bbb;
 }
 
+.footer-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .todo-count {
   font-size: 0.5em;
+}
+
+.status-selector-list {
+  display: flex;
+  margin: 0px;
+}
+
+.status-selector-item {
+  font-size: 0.5em;
+  list-style: none;
+  display: inline;
+  padding-left: 10px;
+}
+
+.status-selector-item a {
+  color: #333;
 }
 
 .complete-todo {

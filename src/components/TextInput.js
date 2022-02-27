@@ -5,6 +5,7 @@ const TextInput = ({ todos, setTodos, count, setCount }) => {
     if (e.key === "Enter" && e.target.value !== "") {
       setTodos([
         ...todos,
+        // not the best way to build an ID. needs improved
         { id: Math.random() * 1000, text: e.target.value, completed: false },
       ]);
 
