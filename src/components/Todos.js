@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-const Todos = ({ todos, setTodos, setCount }) => {
+const Todos = ({ todos, setTodos, setCount, shown }) => {
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   // strike-through styling of a completed item is handled with pure css in App.css
-  const completeTodo = (id) => {
+  const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
@@ -17,23 +17,38 @@ const Todos = ({ todos, setTodos, setCount }) => {
     );
   };
 
+  const toggleTodosShown = (shown) => {
+    switch (shown) {
+      case "SHOW_COMPLETED":
+        return todos.filter((todo) => todo.completed === true);
+
+      case "SHOW_ACTIVE":
+        return todos.filter((todo) => todo.completed === false);
+
+      default:
+        return todos;
+    }
+  };
+
   // any state change will result in an updated count
   useEffect(() => {
     let currentCount = todos.filter((todo) => todo.completed === false).length;
     setCount(currentCount);
+    console.log(todos);
   });
 
+  let filteredState = toggleTodosShown(shown);
   return (
     <>
       <ul className='todoList'>
-        {todos.map((todo) => {
+        {filteredState.map((todo) => {
           return (
             <li className='todo-li' key={todo.id}>
               <input
                 className='complete-todo'
                 type='checkbox'
-                value={todo.completed}
-                onChange={() => completeTodo(todo.id)}
+                checked={todo.completed}
+                onChange={() => toggleTodo(todo.id)}
               />
               <span className='todo-text'>{todo.text}</span>
               <span className='delete-todo' onClick={() => deleteTodo(todo.id)}>

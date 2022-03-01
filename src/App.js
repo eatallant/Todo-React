@@ -10,6 +10,7 @@ import TextInput from "./components/TextInput";
 function App() {
   const [todos, setTodos] = useState([]);
   const [count, setCount] = useState(0);
+  const [shown, setShown] = useState("");
 
   // track active count in the page title. Any state change will result in a new count
   useEffect(() => (document.title = `My Todos (${count})`));
@@ -29,9 +30,10 @@ function App() {
           setTodos={setTodos}
           count={count}
           setCount={setCount}
+          shown={shown}
         />
         <footer className='footer'>
-          <Footer todos={todos} count={count} />
+          <Footer todos={todos} count={count} setShown={setShown} />
         </footer>
       </div>
     </div>
