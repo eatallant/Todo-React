@@ -70,18 +70,32 @@
 
 .todo-count {
   font-size: 0.5em;
+  flex: 1;
 }
 
 .status-selector-list {
   display: flex;
   margin: 0px;
+  justify-content: right;
+  padding-right: 20px;
+  flex: 2;
 }
 
 .status-selector-item {
   font-size: 0.5em;
-  list-style: none;
+  list-style-type: none;
   display: inline;
-  padding-left: 10px;
+  margin-left: 18px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.status-selector-item:hover {
+  background-color: rgb(243, 255, 241);
+}
+
+.status-selector-item a {
+  text-decoration: none;
 }
 
 .status-selector-item a {

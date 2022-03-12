@@ -6,11 +6,11 @@ const Footer = ({ todos, count, setShown }) => {
   };
   return todos.length ? (
     <div className='footer-container'>
-      <div className='todo-count'>Remaining items: {count}</div>
-      <ul className='status-selector-list'>
+      <div className='todo-count footer-flex'>Remaining items: {count}</div>
+      <ul className='status-selector-list footer-flex'>
         <li className='status-selector-item'>
           <a href='/#' onClick={() => setShownToggle("SHOW_ALL")}>
-            All
+            Show All
           </a>
         </li>
         <li className='status-selector-item'>
