@@ -1,5 +1,5 @@
 export default function Store(todos) {
-  console.log("Input provided to Model:", todos);
+  // used in App.js
   return todos
     ? localStorage.setItem("todos", JSON.stringify(todos))
     : JSON.parse(localStorage.getItem("todos")) || [];
