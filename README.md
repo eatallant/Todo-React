@@ -1,6 +1,6 @@
 # Todo React App
 
-My implementation of a to do list application. Data is currently destroyed on refresh, but persistence is coming soon! <br>
+My implementation of a to do list application <br>
 [See it in action](https://master.duem5zgwujvnq.amplifyapp.com/)
 
 ## Stack
@@ -18,7 +18,9 @@ $ npm start
 ```
 
 ## Upcoming enhancements
-  - Data persistence
+  - ~~Data persistence~~ added 3/18/22
+  - Clear completed option
+  - Edit task name
 
 <br>
 This app was bootstrapped with Create React App
