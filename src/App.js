@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Store from "./Model/Storage";
 import "./App.css";
 
 // import components
@@ -8,12 +9,16 @@ import Footer from "./components/Footer";
 import TextInput from "./components/TextInput";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(Store());
   const [count, setCount] = useState(0);
   const [shown, setShown] = useState("");
 
   // track active count in the page title. Any state change will result in a new count
-  useEffect(() => (document.title = `My Todos (${count})`));
+  // pass state into local storage
+  useEffect(() => {
+    document.title = `My Todos (${count})`;
+    Store(todos);
+  });
 
   return (
     <div className='App App-header'>

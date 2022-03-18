@@ -34,7 +34,6 @@ const Todos = ({ todos, setTodos, setCount, shown }) => {
   useEffect(() => {
     let currentCount = todos.filter((todo) => todo.completed === false).length;
     setCount(currentCount);
-    console.log(todos);
   });
 
   let filteredState = toggleTodosShown(shown);
