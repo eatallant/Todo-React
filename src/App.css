@@ -97,10 +97,13 @@
 
 .status-selector-item a {
   text-decoration: none;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-.status-selector-item a {
-  color: #333;
+.status-selector-item-active {
+  background-color: rgb(217, 245, 212);
 }
 
 .complete-todo {
