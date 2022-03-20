@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 const Footer = ({ todos, setTodos, count, setShown }) => {
   const setShownToggle = (status, e) => {
@@ -9,6 +10,20 @@ const Footer = ({ todos, setTodos, count, setShown }) => {
   const clearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
+
+  // clear completed tasks button only displays when there are completed tasks
+  useEffect(() => {
+    if (todos.length) {
+      let btn = document.getElementById("clear-completed-btn");
+      for (let i = 0; i < todos.length; i++) {
+        if (todos[i].completed) {
+          btn.style.display = "flex";
+          return true;
+        }
+      }
+      btn.style.display = "none";
+    }
+  });
   return todos.length ? (
     <div className='footer-container'>
       <div className='todo-count footer-flex'>Remaining items: {count}</div>
