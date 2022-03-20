@@ -1,10 +1,13 @@
 import React from "react";
 
-const Footer = ({ todos, count, setShown }) => {
+const Footer = ({ todos, setTodos, count, setShown }) => {
   const setShownToggle = (status, e) => {
     setShown(status);
     document.querySelector(".status-selector-item-active").className = "";
     e.target.className = "status-selector-item-active";
+  };
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
   };
   return todos.length ? (
     <div className='footer-container'>
@@ -38,6 +41,13 @@ const Footer = ({ todos, count, setShown }) => {
           </a>
         </li>
       </ul>
+      <button
+        id='clear-completed-btn'
+        className='footer-flex'
+        onClick={() => clearCompleted()}
+      >
+        - Clear Completed Tasks -
+      </button>
     </div>
   ) : (
     ""

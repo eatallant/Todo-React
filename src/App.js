@@ -38,7 +38,12 @@ function App() {
           shown={shown}
         />
         <footer className='footer'>
-          <Footer todos={todos} count={count} setShown={setShown} />
+          <Footer
+            todos={todos}
+            setTodos={setTodos}
+            count={count}
+            setShown={setShown}
+          />
         </footer>
       </div>
     </div>
