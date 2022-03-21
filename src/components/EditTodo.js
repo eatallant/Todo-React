@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditTodo = ({ todos, setTodos }) => {
+const EditTodo = ({ todo, todos, setTodos }) => {
   const updateValue = (e) => {
     if (e.key === "Enter") {
       setTodos(
@@ -26,6 +26,7 @@ const EditTodo = ({ todos, setTodos }) => {
 
   return (
     <input
+      placeholder={todo.text}
       className='textInput'
       id='editTextInput'
       type='text'

@@ -56,7 +56,14 @@ const Todos = ({ todos, setTodos, setCount, shown }) => {
       <ul className='todoList'>
         {filteredState.map((todo) => {
           if (todo.editing)
-            return <EditTodo todos={todos} setTodos={setTodos} key={todo.id} />;
+            return (
+              <EditTodo
+                todo={todo}
+                todos={todos}
+                setTodos={setTodos}
+                key={todo.id}
+              />
+            );
           else
             return (
               <li className='todo-li' key={todo.id}>
