@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 
 const Footer = ({ todos, setTodos, count, shown, setShown }) => {
   const handleStatusClickEvent = (e) => {
@@ -15,21 +14,17 @@ const Footer = ({ todos, setTodos, count, shown, setShown }) => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
 
-  // clear completed tasks button is only visible when there are completed tasks
-  useEffect(() => {
-    if (todos.length) {
-      let btn = document.getElementById("clear-completed-btn");
-      if (shown !== "SHOW_ACTIVE") {
-        for (let i = 0; i < todos.length; i++) {
-          if (todos[i].completed) {
-            btn.style.visibility = "visible";
-            return true;
-          }
+  const showCompletedBtn = () => {
+    if (todos.length && shown !== "SHOW_ACTIVE") {
+      for (let i = 0; i < todos.length; i++) {
+        if (todos[i].completed) {
+          return "visible";
         }
       }
-      btn.style.visibility = "hidden";
     }
-  });
+    return "hide";
+  };
+
   return todos.length ? (
     <div className='footer-container'>
       <div className='todo-count footer-flex'>Remaining items: {count}</div>
@@ -73,7 +68,7 @@ const Footer = ({ todos, setTodos, count, shown, setShown }) => {
       </ul>
       <button
         id='clear-completed-btn'
-        className='footer-flex'
+        className={`footer-flex ${showCompletedBtn()}`}
         onClick={() => clearCompleted()}
       >
         Clear Completed Tasks

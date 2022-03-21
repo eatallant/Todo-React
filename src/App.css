@@ -133,6 +133,9 @@
   width: 20px;
   border-radius: 5%;
 }
+.todo-li:hover {
+  color: #777;
+}
 
 input:checked + span {
   text-decoration: line-through;
@@ -154,4 +157,8 @@ input:checked + span {
   to {
     transform: rotate(360deg);
   }
+}
+
+.hide {
+  visibility: hidden;
 }
