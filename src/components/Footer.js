@@ -1,56 +1,71 @@
 import React from "react";
 import { useEffect } from "react";
 
-const Footer = ({ todos, setTodos, count, setShown }) => {
-  const setShownToggle = (status, e) => {
-    setShown(status);
-    document.querySelector(".status-selector-item-active").className = "";
-    e.target.className = "status-selector-item-active";
+const Footer = ({ todos, setTodos, count, shown, setShown }) => {
+  const handleStatusClickEvent = (e) => {
+    let status = e.target.getAttribute("status");
+    updateShownToggle(status);
   };
+
+  const updateShownToggle = (status) => {
+    setShown(status);
+  };
+
   const clearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
 
-  // clear completed tasks button only displays when there are completed tasks
+  // clear completed tasks button is only visible when there are completed tasks
   useEffect(() => {
     if (todos.length) {
       let btn = document.getElementById("clear-completed-btn");
-      for (let i = 0; i < todos.length; i++) {
-        if (todos[i].completed) {
-          btn.style.display = "flex";
-          return true;
+      if (shown !== "SHOW_ACTIVE") {
+        for (let i = 0; i < todos.length; i++) {
+          if (todos[i].completed) {
+            btn.style.visibility = "visible";
+            return true;
+          }
         }
       }
-      btn.style.display = "none";
+      btn.style.visibility = "hidden";
     }
   });
   return todos.length ? (
     <div className='footer-container'>
       <div className='todo-count footer-flex'>Remaining items: {count}</div>
-      <ul className='status-selector-list footer-flex'>
+      <ul
+        className='status-selector-list footer-flex'
+        onClick={(e) => handleStatusClickEvent(e)}
+      >
         <li className='status-selector-item'>
           <a
-            className='status-selector-item-active'
+            className={`${
+              shown === "SHOW_ALL" ? "status-selector-item-active" : ""
+            }`}
+            status='SHOW_ALL'
             href='/#'
-            onClick={(e) => setShownToggle("SHOW_ALL", e)}
           >
             Show All
           </a>
         </li>
         <li className='status-selector-item'>
           <a
-            className='test'
+            className={`${
+              shown === "SHOW_ACTIVE" ? "status-selector-item-active" : ""
+            }`}
+            status='SHOW_ACTIVE'
             href='/#/active'
-            onClick={(e) => setShownToggle("SHOW_ACTIVE", e)}
           >
             Active
           </a>
         </li>
         <li className='status-selector-item'>
           <a
-            className=''
+            className={`${
+              shown === "SHOW_COMPLETED" ? "status-selector-item-active" : ""
+            }`}
+            status='SHOW_COMPLETED'
             href='/#/completed'
-            onClick={(e) => setShownToggle("SHOW_COMPLETED", e)}
           >
             Completed
           </a>
@@ -61,7 +76,7 @@ const Footer = ({ todos, setTodos, count, setShown }) => {
         className='footer-flex'
         onClick={() => clearCompleted()}
       >
-        - Clear Completed Tasks -
+        Clear Completed Tasks
       </button>
     </div>
   ) : (
