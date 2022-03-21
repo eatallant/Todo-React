@@ -20,7 +20,7 @@ $ npm start
 ## Upcoming enhancements
   - ~~Data persistence~~ added 3/18/22
   - ~~Clear completed option~~ added 3/20/22
-  - Edit task name
+  - ~~Edit task name~~ added 3/21/22
 
 <br>
 This app was bootstrapped with Create React App
