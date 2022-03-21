@@ -11,7 +11,7 @@ import TextInput from "./components/TextInput";
 function App() {
   const [todos, setTodos] = useState(Store());
   const [count, setCount] = useState(0);
-  const [shown, setShown] = useState("");
+  const [shown, setShown] = useState("SHOW_ALL");
 
   // track active count in the page title. Any state change will result in a new count
   // pass state into local storage
@@ -42,6 +42,7 @@ function App() {
             todos={todos}
             setTodos={setTodos}
             count={count}
+            shown={shown}
             setShown={setShown}
           />
         </footer>
